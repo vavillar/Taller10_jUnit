@@ -41,4 +41,18 @@ public class OperationsTest {
         assertEquals("7*6=42", result);
     }
 
+    @Test
+    @DisplayName("Solve calcula la división correctamente")
+    void testSolveDivision() {
+        String result = Operations.Solve("20/4");
+        assertEquals("20/4=5", result);
+    }
+
+    @Test
+    @DisplayName("Solve calcula operaciones mixtas con precedencia")
+    void testSolveMixedPrecedence() {
+        String result = Operations.Solve("2+3*4");
+        assertEquals("2+3*4=14", result); // 2 + (3*4)
+    }
+
 }
