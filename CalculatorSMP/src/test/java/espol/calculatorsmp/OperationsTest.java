@@ -27,4 +27,18 @@ public class OperationsTest {
         String result = Operations.Solve("3+5");
         assertEquals("3+5=8", result);
     }
+        @Test
+    @DisplayName("Solve calcula la resta correctamente")
+    void testSolveSubtraction() {
+        String result = Operations.Solve("10-4");
+        assertEquals("10-4=6", result);
+    }
+
+    @Test
+    @DisplayName("Solve calcula la multiplicación correctamente")
+    void testSolveMultiplication() {
+        String result = Operations.Solve("7*6");
+        assertEquals("7*6=42", result);
+    }
+
 }
