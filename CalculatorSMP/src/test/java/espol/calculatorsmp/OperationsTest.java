@@ -1,6 +1,7 @@
 package espol.calculatorsmp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,5 +41,26 @@ public class OperationsTest {
         String result = Operations.Solve("7*6");
         assertEquals("7*6=42", result);
     }
+@Test
+    @DisplayName("Solve calcula de izquierda a derecha")
+    void testSolveLeftToRight() {
+        String result = Operations.Solve("8-2+3");
+        assertEquals("8-2+3=9", result); // (8-2)+3
+    }
 
+    @Test
+    @DisplayName("Solve maneja multiples operaciones")
+    void testSolveMultipleOperations() {
+        String result = Operations.Solve("5+2*3-1");
+        assertEquals("5+2*3-1=10", result); // 5+(2*3)-1
+    }
+
+    @Test
+    @DisplayName("Solve maneja la division para 0")
+    void testSolveDivisionByZero() {
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            Operations.Solve("5/0");
+        });
+        assertTrue(exception.getMessage().contains("/ by zero"));
+    }
 }
